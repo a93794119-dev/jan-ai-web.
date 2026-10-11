@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf8">
+<meta name="referrer" content="no-referrer">
+<title>Jan AI — личный помощник</title>
+<style>
+:root{--paper:#fafaf8;--panel:#fff;--text:#212323;--muted:#616561;--line:#dedfdb;--blue:#1266bc;--soft:#eaf3fe;--red:#a43830;--green:#256c44}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--text)}button,textarea,input{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);background:var(--panel);min-height:48px;border-radius:16px;padding:10px 16px;font-size:16px}button:disabled{cursor:not-allowed;opacity:.5}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #3284dc;outline-offset:3px}button:hover:enabled{border-color:#96b5d6}a{color:var(--blue)}.app{max-width:760px;margin:auto;min-height:100dvh;display:flex;flex-direction:column;padding:24px 24px max(16px,env(safe-area-inset-bottom))}.top{display:flex;align-items:center;gap:8px}.brand{font-size:22px;font-weight:750;letter-spacing:-.7px;margin-right:auto;display:flex;align-items:center;gap:8px}.mini{width:22px;height:22px}.top button{font-size:14px;padding:8px 12px;border-radius:999px}.connection{display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.45;color:var(--muted);margin:18px 0 8px}.dot{width:7px;height:7px;background:#7a807b;border-radius:50%;flex-shrink:0}.connection.ready .dot{background:var(--green)}.connection.error .dot{background:var(--red)}.stage{flex:1;min-height:220px}.welcome{max-width:440px;padding:24px 0 12px;margin:auto}.logo{width:56px;height:56px;margin:0 auto 16px;display:block}h1{font-size:clamp(30px,6.8vw,36px);letter-spacing:-1.4px;line-height:1.15;margin:0 0 16px;text-align:center;font-weight:750}.intro{text-align:center;font-size:16px;line-height:1.55;color:var(--muted);margin:0 0 24px}.choices{display:grid;gap:12px}.choice{display:flex;align-items:center;gap:16px;text-align:left;border-radius:24px;min-height:56px;padding:14px 20px;font-size:18px;background:transparent}.icon{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:var(--soft);color:var(--blue);font-size:21px}.choice:last-child .icon{color:#6250a7;background:#f0edfa}.local-note{text-align:center;font-size:14px;line-height:1.55;color:var(--muted);margin:16px 0 0}.local-note strong{font-weight:600}.setup{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:16px 0 12px;padding:16px;background:var(--soft);border:1px solid #cbdff3;border-radius:16px}.setup p{margin:0;font-size:14px;line-height:1.5}.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.setup button{white-space:nowrap;flex-shrink:0}.messages:empty{display:none}.messages{padding:24px 0;display:grid;gap:16px}.bubble{padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--panel);line-height:1.6;font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}.bubble.user{background:var(--soft);border-color:#d7e6f6;margin-left:28px}.bubble .label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.4}.bubble.error{border-color:#e7b8b1;color:var(--red)}.bubble pre{white-space:pre-wrap;margin:0;font:14px/1.5 ui-monospace,monospace}.composer{padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:24px;margin-top:12px}.composer textarea{display:block;width:100%;min-height:48px;max-height:160px;border:0;resize:vertical;background:transparent;color:inherit;font-size:18px;line-height:1.5;padding:0;margin:0 0 12px}.composer textarea::placeholder{color:var(--muted)}.actions{display:flex;align-items:center;gap:8px}.mode{border:0;background:transparent;color:var(--blue);font-size:14px;padding:8px 0;margin-right:auto;border-radius:8px}.send{border-radius:50%;width:48px;padding:0;font-size:24px}.stop{font-size:14px}.footer{font-size:14px;line-height:1.5;color:var(--muted);text-align:center;margin:12px 0 0}.site-result{padding:16px;border:1px solid var(--line);background:var(--panel);border-radius:16px;margin:8px 0 16px}.site-result h2{font-size:18px;margin:0 0 8px}.site-result p{font-size:14px;line-height:1.5;color:var(--muted);margin:0 0 12px}.result-actions{display:flex;gap:8px;flex-wrap:wrap}.result-actions button{font-size:14px}dialog{padding:0;border:1px solid var(--line);border-radius:24px;background:var(--panel);color:inherit;max-width:520px;width:calc(100% - 32px);max-height:calc(100dvh - 32px)}dialog::backdrop{background:#19222d65}.dialog-body{padding:24px}.dialog-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}.dialog-head h2{font-size:22px;letter-spacing:-.5px;margin:0;margin-right:auto}.close{min-height:44px;width:44px;border-radius:50%;padding:0;font-size:22px}.dialog-body p,.dialog-body li{font-size:16px;line-height:1.6}.dialog-body .small{font-size:14px;color:var(--muted)}.check-panel{padding:16px;border-radius:12px;background:var(--paper);margin:16px 0;min-height:70px;white-space:pre-line;font-size:14px;line-height:1.6;overflow-wrap:anywhere}.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;margin:16px 0}.consent input{width:20px;height:20px;margin:1px 0 0;flex-shrink:0;accent-color:var(--blue)}.dialog-buttons{display:grid;gap:12px}.progress{width:100%;height:8px;accent-color:var(--blue);margin:8px 0}.preview-dialog{max-width:1000px;width:calc(100% - 24px);height:90dvh}.preview-dialog .dialog-body{height:100%;display:flex;flex-direction:column;padding:16px}.preview-dialog iframe{width:100%;flex:1;min-height:200px;border:1px solid var(--line);border-radius:12px;background:white}.preview-dialog .small{margin:0 0 12px}.hidden,[hidden]{display:none!important}@media(max-width:450px){.app{padding:18px 16px max(16px,env(safe-area-inset-bottom))}.welcome{padding-top:20px}h1{font-size:34px}.choice{font-size:17px}.setup{flex-direction:column;align-items:stretch}.setup button{width:100%}.top button{font-size:14px;padding:8px 10px}.brand{font-size:20px}.dialog-body{padding:20px}.bubble.user{margin-left:16px}}@media(prefers-color-scheme:dark){:root{--paper:#191b1c;--panel:#232627;--text:#f4f4f2;--muted:#b4b9b5;--line:#404645;--blue:#94c6fc;--soft:#24364c;--red:#ffb5ac;--green:#91d3a8}.primary{background:#266db5;color:white;border-color:#266db5}.setup{border-color:#405d7a}.bubble.user{border-color:#405d7a}.choice:last-child .icon{background:#343049;color:#c4b5fd}.preview-dialog iframe{color-scheme:light}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><linearGradient id="topG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#afb1ff"/><stop offset="1" stop-color="#5d62e5"/></linearGradient><linearGradient id="leftG"><stop stop-color="#8eaaf2"/><stop offset="1" stop-color="#607ad9"/></linearGradient><linearGradient id="rightG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b3e7f7"/><stop offset="1" stop-color="#32add8"/></linearGradient><symbol id="cube" viewBox="0 0 80 80"><path d="M40 5 73 24 40 43 7 24Z" fill="url(#topG)" stroke="#b9bcf3" stroke-width="2"/><path d="M7 29 36 46 36 76 7 59Z" fill="url(#leftG)" stroke="#b1c9f2" stroke-width="2"/><path d="M44 46 73 29 73 59 44 76Z" fill="url(#rightG)" stroke="#a8dbe9" stroke-width="2"/></symbol></defs></svg>
+<main class="app">
+<header class="top"><div class="brand"><svg class="mini" aria-hidden="true"><use href="#cube"/></svg>Jan AI</div><button id="newChat">Новый чат</button><button id="aboutBtn" aria-label="Открыть настройки">Настройки</button></header>
+<div class="connection" id="connection" role="status" aria-live="polite"><span class="dot"></span><span id="connectionText">Локальный ИИ · пока не подключён</span></div>
+<div class="stage">
+<section class="welcome" id="welcome"><svg class="logo" aria-hidden="true"><use href="#cube"/></svg><h1>Хорошего дня,<br>Жаныбек</h1><p class="intro">Место для твоих идей.<br>Без ключей и счётчика сообщений.</p><div class="choices"><button class="choice" id="siteChoice"><span class="icon" aria-hidden="true">▧</span>Создать небольшой сайт</button><button class="choice" id="chatChoice"><span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9Z" fill="currentColor"/></svg></span>Спросить ИИ</button></div><p class="local-note"><strong>ИИ работает на устройстве</strong><br>Запуск зависит от браузера и телефона.</p></section>
+<div class="messages" id="messages" aria-live="polite" aria-relevant="additions"></div>
+<section class="site-result" id="siteResult" hidden><h2>Твой HTML-сайт</h2><p>Создан локально. Не опубликован. Предпросмотр отключает скрипты, формы и внешние ресурсы.</p><div class="result-actions"><button id="previewBtn">Предпросмотр</button><button id="downloadBtn">Скачать HTML</button></div></section>
+</div>
+<section class="setup" id="setup"><p><strong>Первый запуск</strong><br>Проверь телефон, затем скачай модель по Wi-Fi.</p><button id="setupBtn" class="primary">Подключить ИИ</button></section>
+<form class="composer" id="composer"><label for="prompt" class="hidden">Сообщение для ИИ</label><textarea id="prompt" placeholder="Спроси Jan AI…" maxlength="2000" aria-label="Сообщение для ИИ"></textarea><div class="actions"><button type="button" class="mode" id="mode">✦ Чат · сменить режим</button><button type="button" class="stop" id="stop" hidden>Остановить</button><button type="submit" class="send primary" id="send" aria-label="Отправить сообщение">↑</button></div></form>
+<p class="footer">Без платы за запросы · ограничения памяти и мощности остаются</p>
+</main>
+<dialog id="settings"><div class="dialog-body"><div class="dialog-head"><h2>ИИ на твоём телефоне</h2><button class="close" id="closeSettings" aria-label="Закрыть настройки">×</button></div><p>Небольшая модель запускается в браузере через WebGPU. У сайта нет лимита сообщений и платного API, но скорость и качество ниже, чем у облачного помощника.</p><p class="small">Galaxy S10+ не проверен на реальном устройстве. Нужны совместимый Chrome и Android, доступная память и поддержка WebGPU. Даже успешная проверка не гарантирует запуск модели.</p><div class="check-panel" id="checkStatus" role="status" aria-live="polite">Нажми «Проверить телефон». Проверка ничего не скачивает.</div><progress class="progress" id="progress" max="1" value="0" hidden aria-label="Загрузка модели"></progress><label class="consent"><input id="consent" type="checkbox"><span>Согласен скачать библиотеку и модель с внешних серверов. Это сотни мегабайт; возможен расход трафика. Лучше Wi-Fi.</span></label><div class="dialog-buttons"><button id="checkBtn">Проверить телефон</button><button id="loadBtn" class="primary" disabled>Скачать и запустить модель</button><button id="unloadBtn" hidden>Выгрузить модель из памяти</button></div><p class="small">Выбирается Qwen2.5 0.5B из каталога WebLLM. API-ключ не нужен. Текст используется для локального вычисления, приложение не отправляет переписку на сервер. Внешние серверы видят загрузки файлов и сетевые сведения. Переписка не сохраняется; файлы модели могут остаться в кеше браузера.</p><p class="small">Это самостоятельный экспериментальный проект, не сервис Fig. Нет голосового управления, изображений, презентаций, фоновых задач или действий на телефоне.</p></div></dialog>
+<dialog class="preview-dialog" id="preview"><div class="dialog-body"><div class="dialog-head"><h2>Предпросмотр</h2><button class="close" id="closePreview" aria-label="Закрыть предпросмотр">×</button></div><p class="small">Без скриптов, форм, сетевых запросов и переходов. Экспортируется исходный HTML: проверь его перед открытием или публикацией.</p><iframe id="frame" sandbox="" title="Предпросмотр созданного сайта" referrerpolicy="no-referrer"></iframe></div></dialog>
+<script type="module">
+const $=id=>document.getElementById(id);
+let engine=null,adapter=null,ready=false,busy=false,loading=false,siteMode=false,chat=[],lastHtml='',turn=0,activeBot=null,cancelled=false;
+function connection(text,state=''){ $('connectionText').textContent=text; $('connection').className='connection '+state; }
+function panel(text){$('checkStatus').textContent=text;}
+function openSettings(){ $('settings').showModal(); }
+$('aboutBtn').onclick=openSettings; $('setupBtn').onclick=openSettings; $('closeSettings').onclick=()=>$('settings').close();
+$('settings').addEventListener('click',e=>{if(e.target===$('settings'))$('settings').close();});
+function updateLoad(){ $('loadBtn').disabled=!adapter||!$('consent').checked||loading||busy||ready; }
+$('consent').onchange=updateLoad;
+async function check(){
+ adapter=null; $('checkBtn').disabled=true; panel('Проверяю возможности браузера…');
+ try{
+  if(!window.isSecureContext)throw Error('Нужен HTTPS-адрес сайта. Открытие файла из «Мои файлы» может не поддерживать WebGPU.');
+  if(!navigator.gpu)throw Error('WebGPU недоступен. Обнови Chrome и Android обычным способом. Если поддержка не появилась, локальный ИИ на этом телефоне не запустится. Не включай опасные экспериментальные флаги.');
+  adapter=await navigator.gpu.requestAdapter({powerPreference:'low-power'});
+  if(!adapter)throw Error('Браузер не предоставил видеоустройство WebGPU. Эта конфигурация телефона не подходит.');
+  if(adapter.limits.maxStorageBufferBindingSize<128*1024*1024){adapter=null;throw Error('Видеодрайвер ограничивает память WebGPU. Для этой модели памяти недостаточно.');}
+  panel('WebGPU доступен. Можно попробовать модель 0.5B. Это проверка возможностей, а не гарантия запуска.\nДанные модели скачиваются отдельно после твоего согласия.');
+ }catch(e){panel(e.message);connection('Локальный запуск пока недоступен','error');}
+ finally{$('checkBtn').disabled=false;updateLoad();}
+}
+$('checkBtn').onclick=check;
+$('loadBtn').onclick=async()=>{
+ if(!adapter||!$('consent').checked||loading||ready)return;
+ loading=true;updateLoad();$('checkBtn').disabled=true;$('progress').hidden=false;connection('Загрузка локального ИИ…');
+ let candidate=null;
+ try{
+  panel('Скачиваю библиотеку WebLLM. Не закрывай страницу.');
+  const webllm=await import('https://esm.run/@mlc-ai/web-llm@0.2.79');
+  const fp16=adapter.features.has('shader-f16');
+  const dtype=fp16?'q4f16_1':'q4f32_1';
+  const record=webllm.prebuiltAppConfig.model_list.find(m=>m.model_id.includes('Qwen2.5-0.5B-Instruct')&&m.model_id.includes(dtype));
+  if(!record)throw Error('В этой версии библиотеки нет подходящей маленькой модели для твоего GPU. Более тяжёлая модель автоматически не скачивается.');
+  // Use a reduced context to limit GPU memory on phones; no daily message quota.
+  const appConfig={...webllm.prebuiltAppConfig,model_list:[{...record,overrides:{...record.overrides,context_window_size:2048}}]};
+  candidate=new webllm.MLCEngine({appConfig,initProgressCallback:report=>{
+   panel(String(report.text||'Подготавливаю модель…'));
+   $('progress').value=Math.max(0,Math.min(1,Number(report.progress)||0));
+  }});
+  await candidate.reload(record.model_id);
+  engine=candidate;ready=true;connection('ИИ на телефоне · готов к работе','ready');
+  panel('Модель запущена: '+record.model_id+'\nМожно вернуться в чат. Небольшая модель может ошибаться и плохо справляться со сложными сайтами.');
+  $('progress').value=1;$('setup').hidden=true;$('unloadBtn').hidden=false;
+ }catch(e){
+  if(candidate){try{await candidate.unload();}catch{}}
+  engine=null;ready=false;connection('Не удалось запустить модель','error');
+  panel('Запуск не удался. Возможно, недостаточно памяти, нет доступа к серверу загрузки или несовместим драйвер.\n'+String(e.message||e).slice(0,600));
+ }finally{loading=false;$('checkBtn').disabled=false;updateLoad();}
+};
+$('unloadBtn').onclick=async()=>{
+ if(busy||loading)return;
+ try{if(engine)await engine.unload();}catch{}
+ engine=null;ready=false;chat=[];connection('Локальный ИИ · выгружен');$('setup').hidden=false;$('unloadBtn').hidden=true;
+ panel('Модель выгружена из оперативной памяти. Кеш браузера может сохранить файлы модели.');updateLoad();
+};
+function setMode(value){if(busy)return;siteMode=value;$('mode').textContent=value?'▧ Сайт · сменить режим':'✦ Чат · сменить режим';$('prompt').placeholder=value?'Опиши небольшой сайт…':'Спроси Jan AI…';}
+$('mode').onclick=()=>setMode(!siteMode);
+$('siteChoice').onclick=()=>{setMode(true);$('prompt').value='Создай простой сайт для ';$('prompt').focus();};
+$('chatChoice').onclick=()=>{setMode(false);$('prompt').focus();};
+function bubble(text,user=false,error=false){
+ const el=document.createElement('div');el.className='bubble'+(user?' user':'')+(error?' error':'');
+ const label=document.createElement('span');label.className='label';label.textContent=user?'Ты':'Jan AI';
+ const content=document.createElement('span');content.textContent=text;el.append(label,content);$('messages').append(el);return content;
+}
+function setBusy(value){busy=value;$('send').disabled=value;$('prompt').disabled=value;$('mode').disabled=value;$('newChat').disabled=value;$('unloadBtn').disabled=value;$('stop').hidden=!value;updateLoad();}
+function bottom(){if(window.innerHeight+window.scrollY>=document.body.scrollHeight-400)window.scrollTo({top:document.body.scrollHeight,behavior:'auto'});}
+function htmlFrom(text){
+ let value=text.trim();if(value.startsWith('```'))value=value.replace(/^```[^\n]*\n/,'').replace(/```\s*$/,'').trim();
+ const first=value.search(/<!doctype\s+html|<html[\s>]/i),last=value.toLowerCase().lastIndexOf('</html>');
+ if(first<0||last<first)return '';return value.slice(first,last+7);
+}
+$('composer').onsubmit=async event=>{
+ event.preventDefault();const prompt=$('prompt').value.trim();if(!prompt||busy)return;
+ if(!ready||!engine){openSettings();panel('Сначала проверь телефон и запусти модель. Настоящие ответы ИИ появятся только после успешного запуска.');return;}
+ const id=++turn,requestSite=siteMode;cancelled=false;setBusy(true);$('welcome').hidden=true;
+ bubble(prompt,true);activeBot=bubble(requestSite?'Создаю небольшой HTML-сайт…':'Думаю…');$('prompt').value='';
+ connection(requestSite?'Создаю сайт на телефоне…':'ИИ отвечает на телефоне…','ready');
+ let text='',finish='',outputEl=activeBot;
+ const system=requestSite?'Return ONLY one short complete HTML document including <!doctype html>, html, head, body and closing </html>. Create a simple responsive page with inline CSS. No scripts, external assets, forms or iframe. Keep the entire page under 600 words. Use Russian unless user requests otherwise.':'Ты Jan AI. Отвечай кратко по-русски, если не просят другой язык. У тебя нет доступа к интернету, устройству или инструментам. Не утверждай, что выполнил реальные действия. Если не знаешь ответ, скажи об этом.';
+ const prior=requestSite?[]:chat.slice(-4);
+ const messages=[{role:'system',content:system},...prior,{role:'user',content:prompt}];
+ try{
+  const stream=await engine.chat.completions.create({messages,stream:true,max_tokens:requestSite?1100:400,temperature:requestSite?0.5:0.7});
+  for await(const chunk of stream){
+   if(id!==turn)break;
+   text+=chunk.choices?.[0]?.delta?.content||'';finish=chunk.choices?.[0]?.finish_reason||finish;
+   if(!requestSite)outputEl.textContent=text||'Думаю…';bottom();
+  }
+  if(cancelled){outputEl.textContent=requestSite?'Создание сайта остановлено. Незавершённый HTML не сохранён.':(text||'Ответ остановлен.');return;}
+  if(!text.trim())throw Error('Модель не вернула текст.');
+  if(requestSite){
+   const result=htmlFrom(text);
+   if(!result||finish==='length'){
+    outputEl.textContent='Маленькая модель не создала полный сайт. Попробуй более простой запрос: «Одна страница кофейни: заголовок, описание и контакты». Незавершённый код не выдаётся за готовый сайт.';
+   }else{lastHtml=result;$('siteResult').hidden=false;outputEl.textContent='HTML-сайт готов. Его можно посмотреть и скачать. Сайт не опубликован.';}
+  }else{outputEl.textContent=text+(finish==='length'?'\n\n[Ответ остановлен лимитом длины. Попроси продолжить.]':'');chat.push({role:'user',content:prompt},{role:'assistant',content:text});chat=chat.slice(-4);}
+ }catch(e){outputEl.textContent='Запрос не выполнен. Возможны нехватка памяти, перегрев или слишком длинный контекст. Начни новый чат или перезапусти модель.\n'+String(e.message||e).slice(0,400);outputEl.parentElement.classList.add('error');}
+ finally{activeBot=null;setBusy(false);connection('ИИ на телефоне · готов к работе','ready');bottom();}
+};
+$('stop').onclick=()=>{if(!busy||!engine)return;cancelled=true;engine.interruptGenerate();};
+$('newChat').onclick=()=>{
+ if(busy||!confirm('Удалить переписку и последний сайт с этой страницы? Скачанные файлы останутся.'))return;
+ turn++;chat=[];lastHtml='';$('messages').replaceChildren();$('welcome').hidden=false;$('siteResult').hidden=true;$('prompt').value='';
+ $('frame').srcdoc='';if(engine)engine.resetChat().catch(()=>{});window.scrollTo(0,0);
+};
+$('previewBtn').onclick=()=>{
+ if(!lastHtml)return;
+ // Sandboxed opaque origin with CSP: no JS, network, forms, navigation or native bridge.
+ const parsed=new DOMParser().parseFromString(lastHtml,'text/html');
+ parsed.querySelectorAll('script,iframe,object,embed,base,meta[http-equiv],link').forEach(el=>el.remove());
+ parsed.querySelectorAll('a').forEach(el=>el.removeAttribute('href'));
+ parsed.querySelectorAll('form').forEach(el=>{el.removeAttribute('action');el.removeAttribute('method');});
+ const csp=parsed.createElement('meta');csp.setAttribute('http-equiv','Content-Security-Policy');
+ csp.setAttribute('content',"default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; script-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'");
+ parsed.head.prepend(csp);$('frame').srcdoc='<!doctype html>'+parsed.documentElement.outerHTML;$('preview').showModal();
+};
+$('closePreview').onclick=()=>{$('preview').close();$('frame').srcdoc='';};
+$('preview').addEventListener('close',()=>{$('frame').srcdoc='';});
+$('downloadBtn').onclick=()=>{
+ if(!lastHtml)return;const blob=new Blob([lastHtml],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='jan-ai-site.html';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+};
+if(!window.isSecureContext)connection('Для локального ИИ нужен HTTPS-адрес','error');
+</script>
+</body></html>
